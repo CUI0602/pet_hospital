@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>编辑预约</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel='stylesheet' href='{{ url_for(''static'', filename=''style.css'') }}'>
+
 </head>
-<body class="bg-light">
+<body>
 {% include '_navbar.html' %}
     <div class="container mt-5" style="max-width: 600px;">
         <div class="card shadow">
@@ -36,7 +39,7 @@
                             <option value="">请选择</option>
                             <option value="疫苗接种" {% if appointment.service_type == '疫苗接种' %}selected{% endif %}>疫苗接种</option>
                             <option value="体检" {% if appointment.service_type == '体检' %}selected{% endif %}>体检</option>
-                            <option value="内科检查" {% if appointment.service_type == '内科检查' %}selected{% endif %}>内科检查</option>
+                            <option value="内科检�? {% if appointment.service_type == '内科检�? %}selected{% endif %}>内科检�?/option>
                             <option value="外科手术" {% if appointment.service_type == '外科手术' %}selected{% endif %}>外科手术</option>
                             <option value="美容洗澡" {% if appointment.service_type == '美容洗澡' %}selected{% endif %}>美容洗澡</option>
                             <option value="寄养" {% if appointment.service_type == '寄养' %}selected{% endif %}>寄养</option>
@@ -50,19 +53,19 @@
                                 <option value="{{ y }}" {% if y == appointment.appointment_time.year %}selected{% endif %}>{{ y }}</option>
                                 {% endfor %}
                             </select>
-                            <span>年</span>
+                            <span>�?/span>
                             <select name="month" class="form-select" style="width:auto;" required>
                                 {% for m in range(1, 13) %}
                                 <option value="{{ '%02d' % m }}" {% if '%02d' % m == appointment.appointment_time.strftime('%m') %}selected{% endif %}>{{ '%02d' % m }}</option>
                                 {% endfor %}
                             </select>
-                            <span>月</span>
+                            <span>�?/span>
                             <select name="day" class="form-select" style="width:auto;" required>
                                 {% for d in range(1, 32) %}
                                 <option value="{{ '%02d' % d }}" {% if '%02d' % d == appointment.appointment_time.strftime('%d') %}selected{% endif %}>{{ '%02d' % d }}</option>
                                 {% endfor %}
                             </select>
-                            <span>日</span>
+                            <span>�?/span>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -70,11 +73,11 @@
                         <textarea name="reason" class="form-control" rows="3">{{ appointment.reason }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">状态</label>
+                        <label class="form-label">状�?/label>
                         <select name="status" class="form-select">
-                            <option value="pending" {% if appointment.status == 'pending' %}selected{% endif %}>待就诊</option>
-                            <option value="completed" {% if appointment.status == 'completed' %}selected{% endif %}>已完成</option>
-                            <option value="cancelled" {% if appointment.status == 'cancelled' %}selected{% endif %}>已取消</option>
+                            <option value="pending" {% if appointment.status == 'pending' %}selected{% endif %}>待就�?/option>
+                            <option value="completed" {% if appointment.status == 'completed' %}selected{% endif %}>已完�?/option>
+                            <option value="cancelled" {% if appointment.status == 'cancelled' %}selected{% endif %}>已取�?/option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-warning w-100">更新</button>

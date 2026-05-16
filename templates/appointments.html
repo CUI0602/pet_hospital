@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>预约管理</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel='stylesheet' href='{{ url_for(''static'', filename=''style.css'') }}'>
+
 </head>
-<body class="bg-light">
+<body>
 {% include '_navbar.html' %}
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -23,7 +26,7 @@
                             <th>服务类型</th>
                             <th>预约时间</th>
                             <th>原因</th>
-                            <th>状态</th>
+                            <th>状�?/th>
                             <th>操作</th>
                         </tr>
                     </thead>
@@ -32,22 +35,22 @@
                         <tr>
                             <td>{{ a.id }}</td>
                             <td>{{ a.pet.name }}</td>
-                            <td>{{ a.vet.name if a.vet else '未指定' }}</td>
+                            <td>{{ a.vet.name if a.vet else '未指�? }}</td>
                             <td>{{ a.service_type }}</td>
-                            <td>{{ a.appointment_time.strftime('%Y年%m月%d日') }}</td>
+                            <td>{{ a.appointment_time.strftime('%Y�?m�?d�?) }}</td>
                             <td>{{ a.reason }}</td>
                             <td>
                                 {% if a.status == 'pending' %}
-                                    <span class="badge bg-warning">待就诊</span>
+                                    <span class="badge bg-warning">待就�?/span>
                                 {% elif a.status == 'completed' %}
-                                    <span class="badge bg-success">已完成</span>
+                                    <span class="badge bg-success">已完�?/span>
                                 {% else %}
-                                    <span class="badge bg-secondary">已取消</span>
+                                    <span class="badge bg-secondary">已取�?/span>
                                 {% endif %}
                             </td>
                             <td>
                                 <a href="/appointments/edit/{{ a.id }}" class="btn btn-sm btn-primary">编辑</a>
-                                <a href="/appointments/delete/{{ a.id }}" class="btn btn-sm btn-danger" onclick="return confirm('确定删除？');">删除</a>
+                                <a href="/appointments/delete/{{ a.id }}" class="btn btn-sm btn-danger" onclick="return confirm('确定删除�?);">删除</a>
                             </td>
                         </tr>
                         {% endfor %}
