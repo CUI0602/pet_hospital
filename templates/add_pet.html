@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>新增宠物</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+{% include '_navbar.html' %}
+    <div class="container mt-5" style="max-width: 600px;">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">新增宠物</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">名字</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">种类</label>
+                        <input type="text" name="species" class="form-control" required placeholder="如：狗、猫、兔">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">性别</label>
+                        <select name="gender" class="form-select">
+                            <option value="">请选择</option>
+                            <option value="公">公</option>
+                            <option value="母">母</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">体重 (kg)</label>
+                        <input type="number" name="weight" class="form-control" step="0.1" placeholder="如：5.5">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">过敏史</label>
+                        <textarea name="allergies" class="form-control" rows="2" placeholder="如：青霉素过敏、对某种食物过敏"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">年龄</label>
+                        <input type="number" name="age" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">主人</label>
+                        <select name="owner_id" class="form-select" required>
+                            <option value="">-- 请选择主人 --</option>
+                            {% for owner in owners %}
+                                <option value="{{ owner.id }}">{{ owner.name }} ({{ owner.phone }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">保存</button>
+                    <a href="/pets" class="btn btn-secondary w-100 mt-2">取消</a>
+                </form>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
